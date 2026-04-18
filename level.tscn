@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cc7urxdaifcu1"]
+
+[ext_resource type="Script" uid="uid://dqs7jbiryvvpl" path="res://scripts/level.gd" id="1_0e48y"]
+[ext_resource type="PackedScene" uid="uid://cjsgxypb1a2ec" path="res://cell.tscn" id="2_vonw3"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vonw3"]
+scenes/1/scene = ExtResource("2_vonw3")
+
+[sub_resource type="TileSet" id="TileSet_epypp"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(71, 58)
+sources/3 = SubResource("TileSetScenesCollectionSource_vonw3")
+
+[node name="Level" type="Node2D" unique_id=849003707]
+script = ExtResource("1_0e48y")
+
+[node name="Grid" type="TileMapLayer" parent="." unique_id=2077658599]
+position = Vector2(48.459, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 17, 0, 3, 0, 0, 0, 0, 0, 1, 0, 33, 0, 17, 0, 3, 0, 0, 0, 0, 0, 1, 0)
+tile_set = SubResource("TileSet_epypp")
