@@ -4,13 +4,37 @@ extends RefCounted
 const SIZE := 33
 
 const EVEN_ROW_DIRS: Array[Vector2i] = [
-	Vector2i(+1, 0), Vector2i(0, -1), Vector2i(-1, -1),
-	Vector2i(-1, 0), Vector2i(-1, +1), Vector2i(0, +1)
-]
+			Vector2i(+1, -1), # up-right
+			Vector2i(+1, 0),  # right
+			Vector2i(0, +1),  # down
+			Vector2i(-1, 0),  # left
+			Vector2i(-1, -1), # up-left
+			Vector2i(0, -1)   # up
+		]
 
 const ODD_ROW_DIRS: Array[Vector2i] = [
-	Vector2i(+1, 0), Vector2i(+1, -1), Vector2i(0, -1),
-	Vector2i(-1, 0), Vector2i(0, +1), Vector2i(+1, +1)
+			Vector2i(+1, 0),  # right
+			Vector2i(+1, +1), # down-right
+			Vector2i(0, +1),  # down-left
+			Vector2i(-1, +1), # down
+			Vector2i(-1, 0),  # left
+			Vector2i(0, -1)   # up
+		]
+		
+const EVEN_Q_RADIUS2: Array[Vector2i] = [
+	Vector2i(-2, -1), Vector2i(-2, 0), Vector2i(-2, 1),
+	Vector2i(-1, -2), Vector2i(-1, -1), Vector2i(-1, 0), Vector2i(-1, 1),
+	Vector2i(0, -2), Vector2i(0, -1), Vector2i(0, 1), Vector2i(0, 2),
+	Vector2i(+1, -2), Vector2i(+1, -1), Vector2i(+1, 0), Vector2i(+1, 1),
+	Vector2i(+2, -1), Vector2i(+2, 0), Vector2i(+2, 1)
+]
+
+const ODD_Q_RADIUS2: Array[Vector2i] = [
+	Vector2i(-2, -1), Vector2i(-2, 0), Vector2i(-2, 1),
+	Vector2i(-1, -1), Vector2i(-1, 0), Vector2i(-1, 1), Vector2i(-1, 2),
+	Vector2i(0, -2), Vector2i(0, -1), Vector2i(0, 1), Vector2i(0, 2),
+	Vector2i(+1, -1), Vector2i(+1, 0), Vector2i(+1, 1), Vector2i(+1, 2),
+	Vector2i(+2, -1), Vector2i(+2, 0), Vector2i(+2, 1)
 ]
 
 var title: String = ""
@@ -43,64 +67,66 @@ func for_each_cell(callback: Callable) -> void:
 				callback.call(cell, col, row)
 
 func get_neighbors(col: int, row: int) -> Array[CellData]:
-	var dirs := EVEN_ROW_DIRS if (row % 2 == 0) else ODD_ROW_DIRS
+	var dirs := EVEN_ROW_DIRS if (col % 2 == 0) else ODD_ROW_DIRS
 	var result: Array[CellData] = []
 
 	for d in dirs:
 		var n := get_cell(col + d.x, row + d.y)
-		if n != null and n.kind != CellTypes.CellKind.EMPTY:
-			result.append(n)
+		result.append(n)
+
+	return result
+	
+func get_radius2_neighbors(col: int, row: int) -> Array[CellData]:
+	var dirs := EVEN_Q_RADIUS2 if (col % 2 == 0) else ODD_Q_RADIUS2
+	var result: Array[CellData] = []
+
+	for d in dirs:
+		var cell := get_cell(col + d.x, row + d.y)
+		if cell != null and cell.kind != CellTypes.CellKind.EMPTY:
+			result.append(cell)
 
 	return result
 
 func get_line(col: int, row: int, direction: CellTypes.ColumnDirection) -> Array[CellData]:
 	var result: Array[CellData] = []
-	var key := _line_key(col, row, direction)
 
-	if key == null:
-		return result
+	match direction:
+		CellTypes.ColumnDirection.VERTICAL:
+			for y in range(SIZE):
+				var cell := get_cell(col, y)
+				if cell != null and cell.kind != CellTypes.CellKind.EMPTY:
+					result.append(cell)
 
-	for y in range(SIZE):
-		for x in range(SIZE):
-			var cell := cells[y][x] as CellData
-			if cell == null:
-				continue
+		CellTypes.ColumnDirection.DIAG_RIGHT:
+			var c := col
+			var r := row
 
-			if _line_matches(x, y, direction, key):
-				result.append(cell)
+			while c >= 0 and r >= 0 and c < SIZE and r < SIZE:
+				var cell := get_cell(c, r)
+				if cell != null and cell.kind != CellTypes.CellKind.EMPTY:
+					result.append(cell)
+
+				# move down-left (odd-q vertical layout)
+				if c % 2 == 0:
+					c -= 1
+				else:
+					c -= 1
+					r += 1
+
+		CellTypes.ColumnDirection.DIAG_LEFT:
+			var c := col
+			var r := row
+
+			while c >= 0 and r >= 0 and c < SIZE and r < SIZE:
+				var cell := get_cell(c, r)
+				if cell != null and cell.kind != CellTypes.CellKind.EMPTY:
+					result.append(cell)
+
+				# move down-right (odd-q vertical layout)
+				if c % 2 == 0:
+					c += 1
+				else:
+					c += 1
+					r += 1
 
 	return result
-
-func _line_key(col: int, row: int, direction: CellTypes.ColumnDirection) -> int:
-	match direction:
-		CellTypes.ColumnDirection.VERTICAL:
-			return col
-
-		# Matches your example: (0, 0), (1, 0), (2, 1), (3, 1), ...
-		CellTypes.ColumnDirection.DIAG_RIGHT:
-			@warning_ignore("integer_division")
-			return int(col / 2) - row
-
-		# Mirrored diagonal family.
-		CellTypes.ColumnDirection.DIAG_LEFT:
-			@warning_ignore("integer_division")
-			return int((col + 1) / 2) - row
-
-		_:
-			return -1
-
-func _line_matches(col: int, row: int, direction: CellTypes.ColumnDirection, key: int) -> bool:
-	match direction:
-		CellTypes.ColumnDirection.VERTICAL:
-			return col == key
-
-		CellTypes.ColumnDirection.DIAG_RIGHT:
-			@warning_ignore("integer_division")
-			return int(col / 2) - row == key
-
-		CellTypes.ColumnDirection.DIAG_LEFT:
-			@warning_ignore("integer_division")
-			return int((col + 1) / 2) - row == key
-
-		_:
-			return false

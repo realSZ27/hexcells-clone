@@ -15,16 +15,17 @@ func _ready() -> void:
 func set_hints() -> void:
 	if CELL_DATA.kind == CellTypes.CellKind.TILE and \
 	CELL_DATA.clue_type != CellTypes.ClueType.NONE and \
-	!(CELL_DATA.tile_state == CellTypes.TileState.BLACK_HIDDEN or \
-	CELL_DATA.tile_state == CellTypes.TileState.BLUE_HIDDEN):
+	!CELL_DATA.is_hidden():
 		var label := $Labels/CenterLabel
 		label.visible = true
+		
+		var clue_num_str := str(CELL_DATA.clue_number)
 		if CELL_DATA.clue_type == CellTypes.ClueType.NORMAL:
-			label.text = str(CELL_DATA.clue_number)
-			if CELL_DATA.clue_type == CellTypes.ClueType.CONSECUTIVE:
-				label.text = "~" + label.text + "~"
-			elif CELL_DATA.clue_type == CellTypes.ClueType.NON_CONSECUTIVE:
-				label.text = "-" + label.text + "-"
+			label.text = clue_num_str
+		elif CELL_DATA.clue_type == CellTypes.ClueType.CONSECUTIVE:
+			label.text = "~" + clue_num_str + "~"
+		elif CELL_DATA.clue_type == CellTypes.ClueType.NON_CONSECUTIVE:
+			label.text = "-" + clue_num_str + "-"
 		
 	
 	if CELL_DATA.kind != CellTypes.CellKind.COLUMN_CLUE:
@@ -59,9 +60,6 @@ func set_hints() -> void:
 				label.text = "-" + label.text + "-"
 
 func set_cell_color() -> void:
-	if CELL_DATA.kind == CellTypes.CellKind.COLUMN_CLUE:
-		pass
-
 	match CELL_DATA.tile_state:
 		CellTypes.TileState.BLUE_HIDDEN:
 			hexagon.polygon_color = Color("ff9f01")

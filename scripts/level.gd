@@ -6,6 +6,8 @@ var cell_scene := preload("res://cell.tscn")
 
 var map: Map
 
+var mistakes_count := 0
+
 # visual config
 const HEX_SIZE := 20.0
 
@@ -28,4 +30,5 @@ func draw_cell(cell: CellData, col: int, row: int) -> void:
 	add_child(new_cell)
 
 func _increment_mistakes() -> void:
-	print("increment")
+	mistakes_count += 1
+	$Label.text = str(mistakes_count)

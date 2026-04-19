@@ -50,6 +50,7 @@ static func load_from_file(path: String) -> Map:
 
 			# transform coords
 			var hex_col := file_col
+			@warning_ignore("integer_division")
 			var hex_row := int((file_row - (file_row % 2)) / 2)
 
 			# bounds check (important!)
@@ -75,29 +76,37 @@ static func _initialize_numbers(map: Map) -> void:
 				CellTypes.CellKind.COLUMN_CLUE:
 					cell.column_number = _compute_column_clue_number(map, col, row, cell.column_dir)
 
-				_:
-					pass
 
 static func _compute_tile_clue_number(map: Map, col: int, row: int) -> int:
-	var neighbors := map.get_neighbors(col, row)
-	var count := 0
+	var cell := map.get_cell(col, row)
 
-	for n in neighbors:
-		if n.kind == CellTypes.CellKind.TILE and \
-		(n.tile_state == CellTypes.TileState.BLUE_REVEALED or \
-		n.tile_state == CellTypes.TileState.BLUE_HIDDEN):
-			count += 1
+	if cell == null:
+		return -1
 
-	return count
-
+	if cell.is_black():
+		return _compute_adjacent(map, col, row)
+	elif cell.is_blue():
+		return _compute_radial(map, col, row)
+	else:
+		return -1
+		
 static func _compute_column_clue_number(map: Map, col: int, row: int, direction: CellTypes.ColumnDirection) -> int:
 	var line := map.get_line(col, row, direction)
+	return _count_blues(line)
+	
+static func _compute_adjacent(map: Map, col: int, row: int) -> int:
+	var neighbors := map.get_neighbors(col, row)
+	return _count_blues(neighbors)
+	
+static func _compute_radial(map: Map, col: int, row: int) -> int:
+	var neighbors := map.get_radius2_neighbors(col, row)
+	return _count_blues(neighbors)
+	
+static func _count_blues(list: Array[CellData]) -> int:
 	var count := 0
 
-	for c in line:
-		if c.kind == CellTypes.CellKind.TILE and \
-		(c.tile_state == CellTypes.TileState.BLUE_REVEALED or \
-		c.tile_state == CellTypes.TileState.BLUE_HIDDEN):
+	for n in list:
+		if n != null and n.is_blue():
 			count += 1
 
 	return count

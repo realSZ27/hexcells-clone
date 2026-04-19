@@ -9,11 +9,20 @@ scenes/1/scene = ExtResource("2_vonw3")
 [sub_resource type="TileSet" id="TileSet_epypp"]
 tile_shape = 3
 tile_offset_axis = 1
-tile_size = Vector2i(71, 58)
+tile_size = Vector2i(71, 61)
 sources/3 = SubResource("TileSetScenesCollectionSource_vonw3")
 
 [node name="Level" type="Node2D" unique_id=849003707]
 script = ExtResource("1_0e48y")
+
+[node name="Label" type="Label" parent="." unique_id=539688544]
+offset_left = 1716.0
+offset_top = 26.0
+offset_right = 1881.0
+offset_bottom = 68.0
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Grid" type="TileMapLayer" parent="." unique_id=2077658599]
 position = Vector2(48.459, 0)

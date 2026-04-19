@@ -9,12 +9,13 @@ script = ExtResource("1_gwrgs")
 [node name="Hexagons" type="Node2D" parent="." unique_id=638380273]
 
 [node name="Hexagon" type="Node2D" parent="Hexagons" unique_id=450676045]
+scale = Vector2(1.054, 1.054)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 2.8289999999999997
+border_size = 4.851
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
