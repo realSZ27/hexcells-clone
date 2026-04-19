@@ -12,7 +12,7 @@ var mistakes_count := 0
 const HEX_SIZE := 20.0
 
 func _ready() -> void:
-	map = Map.from_file("res://levels/rougelike.hexcells")
+	map = Map.from_file("res://levels/thetrial.hexcells")
 	Autoload.increment_mistakes.connect(_increment_mistakes)
 	queue_redraw()
 

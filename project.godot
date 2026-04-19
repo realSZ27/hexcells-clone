@@ -34,7 +34,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/regular_polygon2d_node/plugin.cfg")
+enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/regular_polygon2d_node/plugin.cfg")
 
 [physics]
 

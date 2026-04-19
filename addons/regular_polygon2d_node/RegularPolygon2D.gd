@@ -7,6 +7,13 @@ extends Node2D
 		queue_redraw()
 	get:
 		return centered
+		
+@export var antialiased:bool:
+	set(val):
+		antialiased = val
+		queue_redraw()
+	get:
+		return antialiased
 
 @export_range(3, 100, 1) var num_sides = 3:
 	set(val):
@@ -100,6 +107,12 @@ func poly_pts(p_size):
 	return pts
 
 func draw_poly(p_size, p_color, p_texture):
+	if antialiased:
+		draw_poly_antialiased(p_size, p_color, p_texture)
+	else:
+		draw_poly_normal(p_size, p_color, p_texture)
+	
+func draw_poly_normal(p_size, p_color, p_texture):
 	var pts = poly_pts(p_size)
 
 	var uvs = PackedVector2Array()	
@@ -112,6 +125,21 @@ func draw_poly(p_size, p_color, p_texture):
 	vlog("pts: ", pts)
 	vlog("uvs: ", uvs)
 	draw_colored_polygon(pts, p_color, uvs, p_texture)
+	
+func draw_poly_antialiased(p_size, p_color, p_texture):
+	var pts = poly_pts(p_size)
+
+	# --- Fill (same as before) ---
+	
+
+	# --- AA outline on top ---
+	var outline_width := 1.0
+
+	var closed := PackedVector2Array(pts)
+	closed.append(pts[0]) # close loop
+
+	draw_polyline(closed, p_color, outline_width, true)
+	draw_poly_normal(p_size, p_color, p_texture)
 	
 func _notification(what):
 	if what == NOTIFICATION_DRAW:

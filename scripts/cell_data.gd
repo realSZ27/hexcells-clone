@@ -12,29 +12,48 @@ var clue_number: int = -1
 var column_dir: CellTypes.ColumnDirection = CellTypes.ColumnDirection.NONE
 var column_number: int = -1
 
+
 func is_blue() -> bool:
 	return kind == CellTypes.CellKind.TILE and (
 		tile_state == CellTypes.TileState.BLUE_REVEALED or
 		tile_state == CellTypes.TileState.BLUE_HIDDEN
 	)
-	
+
+
 func is_black() -> bool:
 	return kind == CellTypes.CellKind.TILE and (
 		tile_state == CellTypes.TileState.BLACK_HIDDEN or
 		tile_state == CellTypes.TileState.BLACK_REVEALED
 	)
-	
+
+
 func is_shown() -> bool:
 	return kind == CellTypes.CellKind.TILE and (
 		tile_state == CellTypes.TileState.BLUE_REVEALED or
 		tile_state == CellTypes.TileState.BLACK_REVEALED
 	)
-	
+
+
 func is_hidden() -> bool:
 	return kind == CellTypes.CellKind.TILE and (
 		tile_state == CellTypes.TileState.BLACK_HIDDEN or
 		tile_state == CellTypes.TileState.BLUE_HIDDEN
 	)
+
+
+func is_revealed() -> bool:
+	return is_shown()
+
+
+func get_revealed_state() -> CellTypes.TileState:
+	match tile_state:
+		CellTypes.TileState.BLUE_HIDDEN:
+			return CellTypes.TileState.BLUE_REVEALED
+		CellTypes.TileState.BLACK_HIDDEN:
+			return CellTypes.TileState.BLACK_REVEALED
+		_:
+			return tile_state
+
 
 func _to_string() -> String:
 	return "CellData: kind=%s, tile_state=%s, clue_type=%s, clue_number=%s, column_dir=%s, column_number=%s" % \

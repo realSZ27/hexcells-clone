@@ -26,5 +26,4 @@ vertical_alignment = 1
 
 [node name="Grid" type="TileMapLayer" parent="." unique_id=2077658599]
 position = Vector2(48.459, 0)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 17, 0, 3, 0, 0, 0, 0, 0, 1, 0, 33, 0, 17, 0, 3, 0, 0, 0, 0, 0, 1, 0)
 tile_set = SubResource("TileSet_epypp")

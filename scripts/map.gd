@@ -106,7 +106,6 @@ func get_line(col: int, row: int, direction: CellTypes.ColumnDirection) -> Array
 				if cell != null and cell.kind != CellTypes.CellKind.EMPTY:
 					result.append(cell)
 
-				# move down-left (odd-q vertical layout)
 				if c % 2 == 0:
 					c -= 1
 				else:
@@ -122,7 +121,6 @@ func get_line(col: int, row: int, direction: CellTypes.ColumnDirection) -> Array
 				if cell != null and cell.kind != CellTypes.CellKind.EMPTY:
 					result.append(cell)
 
-				# move down-right (odd-q vertical layout)
 				if c % 2 == 0:
 					c += 1
 				else:

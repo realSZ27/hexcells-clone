@@ -34,10 +34,6 @@ static func load_from_file(path: String) -> Map:
 			return null
 
 		for file_col in range(Map.SIZE):
-			# skip padding cells
-			if (file_col % 2) != (file_row % 2):
-				continue
-
 			var i := file_col * 2
 			var pair := line.substr(i, 2)
 
@@ -53,9 +49,20 @@ static func load_from_file(path: String) -> Map:
 			@warning_ignore("integer_division")
 			var hex_row := int((file_row - (file_row % 2)) / 2)
 
-			# bounds check (important!)
+			# detect padding cell
+			if (file_col % 2) != (file_row % 2):
+				# shift LEFT (you could switch to +1 for right instead)
+				hex_col += 1
+
+			# bounds check AFTER shift
 			if hex_col < 0 or hex_col >= Map.SIZE:
-				continue
+				push_error("Shifted cell out of bounds at (%d, %d)" % [file_col, file_row])
+				return null
+
+			# collision check
+			if map.cells[hex_row][hex_col] != null:
+				push_error("Cell collision at (%d, %d)" % [hex_col, hex_row])
+				return null
 
 			map.cells[hex_row][hex_col] = cell
 
