@@ -83,7 +83,9 @@ static func _compute_tile_clue_number(map: Map, col: int, row: int) -> int:
 	var count := 0
 
 	for n in neighbors:
-		if n.kind == CellTypes.CellKind.TILE:
+		if n.kind == CellTypes.CellKind.TILE and \
+		(n.tile_state == CellTypes.TileState.BLUE_REVEALED or \
+		n.tile_state == CellTypes.TileState.BLUE_HIDDEN):
 			count += 1
 
 	return count
@@ -93,7 +95,9 @@ static func _compute_column_clue_number(map: Map, col: int, row: int, direction:
 	var count := 0
 
 	for c in line:
-		if c.kind == CellTypes.CellKind.TILE:
+		if c.kind == CellTypes.CellKind.TILE and \
+		(c.tile_state == CellTypes.TileState.BLUE_REVEALED or \
+		c.tile_state == CellTypes.TileState.BLUE_HIDDEN):
 			count += 1
 
 	return count

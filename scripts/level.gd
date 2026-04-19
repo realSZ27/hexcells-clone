@@ -11,9 +11,8 @@ const HEX_SIZE := 20.0
 
 func _ready() -> void:
 	map = Map.from_file("res://levels/rougelike.hexcells")
-
+	Autoload.increment_mistakes.connect(_increment_mistakes)
 	queue_redraw()
-
 
 func _draw() -> void:
 	map.for_each_cell(draw_cell)
@@ -27,3 +26,6 @@ func draw_cell(cell: CellData, col: int, row: int) -> void:
 	new_cell.position = to_global(GRID.map_to_local(Vector2i(col, row)))
 	new_cell.CELL_DATA = cell
 	add_child(new_cell)
+
+func _increment_mistakes() -> void:
+	print("increment")
