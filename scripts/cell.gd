@@ -16,9 +16,10 @@ var _pulse_tween: Tween
 var _base_position: Vector2
 var _shake_time := 0.0
 var _shaking := false
+var temp_shake_amplitude := -1.0
 
 const SHAKE_DURATION := 0.2
-const SHAKE_AMPLITUDE := 2.0
+const SHAKE_AMPLITUDE := 1.0
 const SHAKE_SPEED := 50.0
 
 const EXPAND_DURATION := 0.3
@@ -95,15 +96,19 @@ func _animate_shake(delta: float) -> void:
 		_shaking = false
 		position = _base_position
 		_shake_time = 0.0
+		temp_shake_amplitude = -1
 		return
+		
+	var amp := temp_shake_amplitude if temp_shake_amplitude > 0 \
+		else SHAKE_AMPLITUDE
 
 	var t := _shake_time * SHAKE_SPEED
 	
 	var strength := 1.0 - (_shake_time / SHAKE_DURATION)
 
 	var offset := Vector2(
-		sin(t) * SHAKE_AMPLITUDE,
-		cos(t * 1.7) * SHAKE_AMPLITUDE
+		sin(t) * amp,
+		cos(t * 1.7) * amp
 	) * strength
 
 	position = _base_position + offset
@@ -250,6 +255,9 @@ func _handle_tile_left_click() -> void:
 		CellTypes.TileState.BLUE_HIDDEN:
 			uncover()
 		CellTypes.TileState.BLACK_HIDDEN:
+			_shaking = true
+			temp_shake_amplitude = 2
+			_shake_time = 0
 			Autoload.increment_mistakes.emit()
 		_:
 			if CELL_DATA.is_blue() and CELL_DATA.clue_type == CellTypes.ClueType.NORMAL:
@@ -261,6 +269,9 @@ func _handle_tile_right_click() -> void:
 		CellTypes.TileState.BLACK_HIDDEN:
 			uncover()
 		CellTypes.TileState.BLUE_HIDDEN:
+			_shaking = true
+			temp_shake_amplitude = 5
+			_shake_time = 0
 			Autoload.increment_mistakes.emit()
 
 
