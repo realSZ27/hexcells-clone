@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dqs7jbiryvvpl" path="res://scripts/level.gd" id="1_0e48y"]
 [ext_resource type="PackedScene" uid="uid://cjsgxypb1a2ec" path="res://cell.tscn" id="2_vonw3"]
+[ext_resource type="Theme" uid="uid://bkno00pwdyukr" path="res://project_theme.tres" id="3_0b4ue"]
+[ext_resource type="Script" uid="uid://woflibj34ywd" path="res://scripts/grid.gd" id="3_f2txt"]
+[ext_resource type="FontFile" uid="uid://bfooh2lram38u" path="res://Poppins/Poppins-Medium.ttf" id="4_f2txt"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vonw3"]
 scenes/1/scene = ExtResource("2_vonw3")
@@ -15,9 +18,22 @@ sources/3 = SubResource("TileSetScenesCollectionSource_vonw3")
 [node name="Level" type="Node2D" unique_id=849003707]
 script = ExtResource("1_0e48y")
 
+[node name="Background" type="CanvasLayer" parent="." unique_id=1646665261]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=388306174]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+
 [node name="Grid" type="TileMapLayer" parent="." unique_id=2077658599]
 position = Vector2(48.459, 0)
 tile_set = SubResource("TileSet_epypp")
+script = ExtResource("3_f2txt")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=78584055]
 
@@ -28,12 +44,70 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+theme = ExtResource("3_0b4ue")
 
-[node name="Remaining" type="Label" parent="UI/VBoxContainer" unique_id=282445812]
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer" unique_id=1520821119]
 layout_mode = 2
+theme_override_constants/margin_bottom = 8
 
-[node name="Mistakes" type="Label" parent="UI/VBoxContainer" unique_id=539688544]
+[node name="ColorRect" type="ColorRect" parent="UI/VBoxContainer/MarginContainer" unique_id=330536278]
 layout_mode = 2
+color = Color(0.019607844, 0.6431373, 0.92156863, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/MarginContainer" unique_id=1985633537]
+layout_mode = 2
+theme_override_constants/margin_top = -3
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = -8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/VBoxContainer/MarginContainer/MarginContainer" unique_id=1969585231]
+layout_mode = 2
+theme_override_constants/separation = -15
+
+[node name="Remaining" type="Label" parent="UI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=1730092722]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_f2txt")
+text = "REMAINING"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="UI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer" unique_id=651964276]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_f2txt")
+theme_override_font_sizes/font_size = 70
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/VBoxContainer" unique_id=472579390]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="ColorRect" type="ColorRect" parent="UI/VBoxContainer/MarginContainer2" unique_id=1411027430]
+layout_mode = 2
+color = Color(0.019607844, 0.6431373, 0.92156863, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/MarginContainer2" unique_id=302996671]
+layout_mode = 2
+theme_override_constants/margin_top = -3
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = -8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/VBoxContainer/MarginContainer2/MarginContainer" unique_id=60065016]
+layout_mode = 2
+theme_override_constants/separation = -15
+
+[node name="Mistakes" type="Label" parent="UI/VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer2" unique_id=1208934036]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_f2txt")
+text = "MISTAKES"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="UI/VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer2" unique_id=1255736372]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_f2txt")
+theme_override_font_sizes/font_size = 70
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1

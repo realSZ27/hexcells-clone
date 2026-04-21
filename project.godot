@@ -36,6 +36,12 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/regular_polygon2d_node/plugin.cfg")
 
+[importer_defaults]
+
+font_data_dynamic={
+&"multichannel_signed_distance_field": true
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -43,4 +49,6 @@ enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/reg
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 anti_aliasing/quality/msaa_2d=3

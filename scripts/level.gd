@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var GRID := $Grid
+@onready var MISTAKES_NUM := $UI/VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer2/Number
+@onready var REMAINING_NUM := $UI/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Number
 
 var cell_scene := preload("res://cell.tscn")
 
@@ -15,16 +17,21 @@ const HEX_SIZE := 20.0
 func _ready() -> void:
 	map = Map.from_file("res://levels/thetrial.hexcells")
 	
-	Autoload.increment_mistakes.connect(_increment_mistakes)
+	Autoload.increment_mistakes.connect(func() -> void:
+		mistakes_count += 1
+		MISTAKES_NUM.text = str(mistakes_count)
+	)
 	queue_redraw()
 	
 func _process(_delta: float) -> void:
-	map.for_each_cell(count_blue_cells)
+	remaining = 0
 	
-func count_blue_cells(cell: CellData, _col: int, _row: int) -> void: 
-	if cell.is_blue():
-		remaining += 1
+	map.for_each_cell(func(cell: CellData, _col: int, _row: int) -> void: 
+		if cell.is_blue() and cell.is_hidden():
+			remaining += 1
+	)
 	
+	REMAINING_NUM.text = str(remaining)
 
 func _draw() -> void:
 	map.for_each_cell(draw_cell)
@@ -37,8 +44,4 @@ func draw_cell(cell: CellData, col: int, row: int) -> void:
 	var new_cell := cell_scene.instantiate()
 	new_cell.position = to_global(GRID.map_to_local(Vector2i(col, row)))
 	new_cell.CELL_DATA = cell
-	add_child(new_cell)
-
-func _increment_mistakes() -> void:
-	mistakes_count += 1
-	$UI/VBoxContainer/Mistakes.text = str(mistakes_count)
+	GRID.add_child(new_cell)

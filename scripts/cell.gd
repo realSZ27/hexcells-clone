@@ -226,7 +226,10 @@ func uncover() -> void:
 # ========================
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is not InputEventMouseButton or !event.pressed:
+	if event is not InputEventMouseButton or event.pressed:
+		return
+	
+	if get_parent().should_block_click(event.position):
 		return
 
 	var e := event as InputEventMouseButton
@@ -293,7 +296,6 @@ func _handle_column_click(e: InputEventMouseButton) -> void:
 	if helper == null:
 		return
 
-	# yeah… still cursed, but isolated now
 	helper.size = Vector2(6.62, 2010.976)
 	swap_visibility(helper)
 

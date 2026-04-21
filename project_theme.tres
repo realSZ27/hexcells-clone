@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://bkno00pwdyukr"]
+
+[ext_resource type="FontFile" uid="uid://w2ts36gs07ch" path="res://Poppins/Poppins-Regular.ttf" id="1_tf5ee"]
+
+[resource]
+default_font = ExtResource("1_tf5ee")
+default_font_size = 37
+Label/fonts/font = ExtResource("1_tf5ee")
+MarginContainer/constants/margin_bottom = 50
+MarginContainer/constants/margin_left = 50
+MarginContainer/constants/margin_right = 50
+MarginContainer/constants/margin_top = 50
+Window/fonts/title_font = ExtResource("1_tf5ee")
