@@ -15,16 +15,17 @@ script = ExtResource("1_gwrgs")
 [node name="BigRadius" type="Polygon2D" parent="Helpers/RadialHelp" unique_id=1904870760]
 visible = false
 z_index = 1
+position = Vector2(-1.473, 0)
 color = Color(1, 1, 1, 0.34509805)
 offset = Vector2(195.82304, -43.066887)
-polygon = PackedVector2Array(-213.55362, -103.73052, -178.12979, -103.76084, -160.39346, -73.0648, -128.52223, -73.011406, -112.314575, -44.91105, -76.88321, -44.936142, -59.132965, -14.229317, -75.622734, 14.389887, -59.148544, 43.101273, -75.31375, 71.26347, -59.110992, 99.37196, -76.835464, 130.06653, -111.46369, 130.00493, -128.52063, 159.53024, -160.59778, 159.55927, -178.13383, 189.83133, -213.55693, 189.82239, -231.09534, 159.53845, -263.11774, 159.5334, -280.2496, 130.06155, -315.01556, 130.06746, -332.76575, 99.38513, -316.4468, 71.23909, -332.6932, 43.06524, -316.16785, 14.438267, -332.70798, -14.243809, -315.0094, -44.9625, -279.26862, -44.99244, -263.1484, -72.982185, -231.34694, -73.11657)
+polygon = PackedVector2Array(-212.67845, -108.00997, -179.06734, -107.87199, -161.28009, -77.61917, -125.94872, -77.59968, -108.21218, -46.992577, -72.857635, -46.98989, -56.008133, -18.026642, -73.17155, 12.554283, -55.793976, 43.18918, -73.27196, 73.528564, -55.750336, 104.24519, -72.49553, 133.16595, -108.18657, 133.2539, -125.91574, 163.75676, -161.4064, 163.7251, -179.19914, 194.1846, -212.71204, 194.16266, -230.39653, 163.68909, -266.0259, 163.6891, -283.64233, 133.20639, -319.38968, 133.15866, -336.05005, 103.97225, -318.513, 73.575294, -336.16107, 43.020763, -318.47336, 12.644251, -336.10394, -18.052017, -319.31195, -47.018616, -283.7019, -47.051933, -266.1358, -77.43112, -230.72829, -77.67719)
 uv = PackedVector2Array(-213.55362, -103.73052, -178.12979, -103.76084, -160.39346, -73.0648, -128.52223, -73.011406, -112.314575, -44.91105, -76.88321, -44.936142, -59.132965, -14.229317, -75.622734, 14.389887, -59.148544, 43.101273, -75.31375, 71.26347, -59.110992, 99.37196, -76.835464, 130.06653, -111.46369, 130.00493, -128.52063, 159.53024, -160.59778, 159.55927, -178.13383, 189.83133, -213.55693, 189.82239, -231.09534, 159.53845, -263.11774, 159.5334, -280.2496, 130.06155, -315.01556, 130.06746, -332.76575, 99.38513, -316.4468, 71.23909, -332.6932, 43.06524, -316.16785, 14.438267, -332.70798, -14.243809, -315.0094, -44.9625, -279.26862, -44.99244, -263.1484, -72.982185, -231.34694, -73.11657)
 
 [node name="Line2D" type="Line2D" parent="Helpers/RadialHelp/BigRadius" unique_id=246261387]
 position = Vector2(197.9496, -43.066887)
-points = PackedVector2Array(-213.55362, -103.73052, -178.12979, -103.76084, -160.39346, -73.0648, -128.52223, -73.011406, -112.314575, -44.91105, -76.88321, -44.936142, -59.132965, -14.229317, -75.622734, 14.389887, -59.148544, 43.101273, -75.31375, 71.26347, -59.110992, 99.37196, -76.835464, 130.06653, -111.46369, 130.00493, -128.52063, 159.53024, -160.59778, 159.55927, -178.13383, 189.83133, -213.55693, 189.82239, -231.09534, 159.53845, -263.11774, 159.5334, -280.2496, 130.06155, -315.01556, 130.06746, -332.76575, 99.38513, -316.4468, 71.23909, -332.6932, 43.06524, -316.16785, 14.438267, -332.70798, -14.243809, -315.0094, -44.9625, -279.26862, -44.99244, -263.1484, -72.982185, -231.34694, -73.11657)
+points = PackedVector2Array(-212.67845, -108.00997, -179.06734, -107.87199, -161.28009, -77.61917, -125.94872, -77.59968, -108.21218, -46.992577, -72.857635, -46.98989, -56.008133, -18.026642, -73.17155, 12.554283, -55.793976, 43.18918, -73.27196, 73.528564, -55.750336, 104.24519, -72.49553, 133.16595, -108.18657, 133.2539, -125.91574, 163.75676, -161.4064, 163.7251, -179.19914, 194.1846, -212.71204, 194.16266, -230.39653, 163.68909, -266.0259, 163.6891, -283.64233, 133.20639, -319.38968, 133.15866, -336.05005, 103.97225, -318.513, 73.575294, -336.16107, 43.020763, -318.47336, 12.644251, -336.10394, -18.052017, -319.31195, -47.018616, -283.7019, -47.051933, -266.1358, -77.43112, -230.72829, -77.67719)
 closed = true
-width = 4.585
+width = 5.032
 
 [node name="test" type="Node2D" parent="Helpers/RadialHelp" unique_id=1137096368]
 visible = false
@@ -37,228 +38,228 @@ centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon3" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=329138565]
-position = Vector2(49.6, -28.101433)
+position = Vector2(49.6, -28.66607)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon4" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=605894114]
-position = Vector2(49.6, 28.401623)
+position = Vector2(49.59999, 28.664701)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon5" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1957199084]
-position = Vector2(0, 56.303886)
+position = Vector2(0, 57.465416)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon6" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=2036035016]
-position = Vector2(-49.6, 28.401623)
+position = Vector2(-49.6, 28.6647)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon7" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=863373572]
-position = Vector2(-101.447075, -1.9073486e-06)
+position = Vector2(-99.24207, 0)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon8" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1679106825]
-position = Vector2(-101.44707, -57.309586)
+position = Vector2(-99.24207, -57.309586)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon9" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=2029268593]
-position = Vector2(-49.6, -85.42439)
+position = Vector2(-49.6, -85.95944)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon10" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=2127439276]
-position = Vector2(0, -116.14532)
+position = Vector2(0, -114.60151)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon11" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=845798512]
-position = Vector2(49.6, -85.42439)
+position = Vector2(49.6, -85.95944)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon12" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1083845821]
-position = Vector2(101.26223, -57.309586)
+position = Vector2(99.35149, -57.309586)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon13" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=931413860]
-position = Vector2(101.26222, 0)
+position = Vector2(99.35149, 0)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon14" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=760700186]
-position = Vector2(101.26223, 56.303886)
+position = Vector2(99.35148, 57.465416)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon15" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1034742326]
-position = Vector2(49.59999, 85.7949)
+position = Vector2(49.59999, 85.79489)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon16" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=617558926]
-position = Vector2(0, 116.06432)
+position = Vector2(0, 114.531845)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon17" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1852641244]
-position = Vector2(-49.6, 85.7949)
+position = Vector2(-49.6, 85.79488)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon18" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1923677337]
-position = Vector2(-101.44707, 56.30388)
+position = Vector2(-99.24207, 57.465416)
 scale = Vector2(1.110916, 1.110916)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [node name="Hexagon" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1901697275]
-position = Vector2(-49.6, -28.101433)
-scale = Vector2(1.054, 1.054)
+position = Vector2(-49.6, -28.66607)
+scale = Vector2(1.111, 1.111)
 script = ExtResource("2_2yjhv")
 centered = true
 num_sides = 6
 size = 58.928
 polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
-border_size = 4.851
+border_size = 0.0
 border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
 polygon_rotation = 90.0
 metadata/_custom_type_script = "uid://cc057gin2tqcv"
