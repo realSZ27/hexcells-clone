@@ -226,10 +226,16 @@ func uncover() -> void:
 # ========================
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is not InputEventMouseButton or event.pressed:
+	if (event is not InputEventMouseButton or event is InputEventScreenTouch) or event.pressed:
+		print("skipping, event not of correct type")
 		return
 	
 	if get_parent().should_block_click(event.position):
+		return
+		
+	if event is InputEventScreenTouch:
+		print("handling touch event")
+		$TouchControls.visible = true
 		return
 
 	var e := event as InputEventMouseButton
@@ -239,7 +245,6 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			_handle_tile_click(e)
 		CellTypes.CellKind.COLUMN_CLUE:
 			_handle_column_click(e)
-
 
 # ---- TILE INPUT ----
 

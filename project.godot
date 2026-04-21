@@ -27,7 +27,6 @@ gdscript/warnings/untyped_declaration=2
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
 window/size/initial_position_type=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
@@ -49,6 +48,4 @@ font_data_dynamic={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 anti_aliasing/quality/msaa_2d=3

@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cc057gin2tqcv" path="res://addons/regular_polygon2d_node/RegularPolygon2D.gd" id="2_2yjhv"]
 [ext_resource type="Script" uid="uid://cqmf7u8b7l1yx" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="3_2yjhv"]
 [ext_resource type="FontFile" uid="uid://w2ts36gs07ch" path="res://Poppins/Poppins-Regular.ttf" id="4_7c3yk"]
+[ext_resource type="Script" uid="uid://chcctkllk6irv" path="res://scripts/blue_touch.gd" id="5_d5rym"]
+[ext_resource type="Script" uid="uid://bwqhg6j2kl686" path="res://scripts/grey_touch.gd" id="6_2nn5k"]
 
 [node name="Cell" type="Node2D" unique_id=68434498]
 script = ExtResource("1_gwrgs")
@@ -411,6 +413,63 @@ vertical_alignment = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=290939265]
 polygon = PackedVector2Array(-15.534921, -26.862625, -31, 0, -15.518843, 26.890388, 15.560024, 26.855278, 31, 0, 15.4365425, -26.9229)
+
+[node name="TouchControls" type="Node2D" parent="." unique_id=612384257]
+visible = false
+
+[node name="Blue" type="Node2D" parent="TouchControls" unique_id=72157022]
+position = Vector2(-36, -58)
+script = ExtResource("5_d5rym")
+
+[node name="Hexagon" type="Node2D" parent="TouchControls/Blue" unique_id=409759790]
+scale = Vector2(1.054, 1.054)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 4.851
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="InnerHexagon" type="Node2D" parent="TouchControls/Blue" unique_id=713159942]
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 51.827
+polygon_color = Color(0.019607844, 0.6431373, 0.92156863, 1)
+border_size = -1.537
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Grey" type="Node2D" parent="TouchControls" unique_id=745499978]
+position = Vector2(36, -58)
+script = ExtResource("6_2nn5k")
+
+[node name="Hexagon" type="Node2D" parent="TouchControls/Grey" unique_id=1107754964]
+scale = Vector2(1.054, 1.054)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.17254902, 0.18431373, 0.19215687, 1)
+border_size = 4.851
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="InnerHexagon" type="Node2D" parent="TouchControls/Grey" unique_id=1453797903]
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 51.827
+polygon_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
+border_size = -1.537
+border_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]

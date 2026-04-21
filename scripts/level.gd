@@ -15,7 +15,7 @@ var remaining := 0
 const HEX_SIZE := 20.0
 
 func _ready() -> void:
-	map = Map.from_file("res://levels/thetrial.hexcells")
+	map = Map.from_file("res://levels/rougelike.hexcells")
 	
 	Autoload.increment_mistakes.connect(func() -> void:
 		mistakes_count += 1
