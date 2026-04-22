@@ -8,6 +8,7 @@ var CELL_DATA: CellData
 @onready var radial_outline := $Helpers/RadialHelp/BigRadius/Line2D
 
 var _is_hovered := false
+var is_linear_visible := false
 
 var _radial_expanded := false
 var _radial_tween: Tween
@@ -268,11 +269,20 @@ func _handle_tile_left_click() -> void:
 			_shake_time = 0
 			Autoload.increment_mistakes.emit()
 		_:
-			if CELL_DATA.is_blue() and CELL_DATA.clue_type == CellTypes.ClueType.NORMAL:
+			if CELL_DATA.is_radial():
 				toggle_radial()
 
 
 func _handle_tile_right_click() -> void:
+	if CELL_DATA.is_revealed() and CELL_DATA.is_hint():
+		swap_label_darkened()
+		
+		if CELL_DATA.is_radial() and radial.visible:
+			toggle_radial()
+		elif is_linear_visible:
+			swap_linear_helper()
+		return
+		
 	match CELL_DATA.tile_state:
 		CellTypes.TileState.BLACK_HIDDEN:
 			uncover()
@@ -286,11 +296,19 @@ func _handle_tile_right_click() -> void:
 # ---- COLUMN INPUT ----
 
 func _handle_column_click(e: InputEventMouseButton) -> void:
-	if e.button_index != MOUSE_BUTTON_LEFT:
+	if e.button_index == MOUSE_BUTTON_RIGHT:
+		swap_label_darkened()
+		swap_linear_helper()
 		return
 
 	print("got click event for column clue: " + e.to_string())
+	swap_linear_helper()
 
+# ========================
+# UTILS
+# ========================
+
+func swap_linear_helper() -> void:
 	var helper_map := {
 		CellTypes.ColumnDirection.DIAG_RIGHT: $Helpers/LinearHelp/LeftHelper,
 		CellTypes.ColumnDirection.DIAG_LEFT: $Helpers/LinearHelp/RightHelper,
@@ -304,14 +322,17 @@ func _handle_column_click(e: InputEventMouseButton) -> void:
 	helper.size = Vector2(6.62, 2010.976)
 	swap_visibility(helper)
 
-
-# ========================
-# UTILS
-# ========================
-
 func swap_visibility(node: Node) -> void:
 	node.visible = !node.visible
 
+func swap_label_darkened() -> void:
+	for child: Label in $Labels.get_children():
+		var color := child.get_theme_color("font_color")
+		if color == Color.WHITE:
+			child.add_theme_color_override("font_color", Color(1, 1, 1, .8))
+		else:
+			child.remove_theme_color_override("font_color")
+		
 
 func _on_mouse_entered() -> void:
 	if CELL_DATA.is_hidden():

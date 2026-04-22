@@ -1,0 +1,476 @@
+[gd_scene format=3 uid="uid://cjsgxypb1a2ec"]
+
+[ext_resource type="Script" uid="uid://cpi1hxid4bpnc" path="res://scripts/cell.gd" id="1_gwrgs"]
+[ext_resource type="Script" uid="uid://cc057gin2tqcv" path="res://addons/regular_polygon2d_node/RegularPolygon2D.gd" id="2_2yjhv"]
+[ext_resource type="Script" uid="uid://cqmf7u8b7l1yx" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="3_2yjhv"]
+[ext_resource type="FontFile" uid="uid://w2ts36gs07ch" path="res://Poppins/Poppins-Regular.ttf" id="4_7c3yk"]
+[ext_resource type="Script" uid="uid://chcctkllk6irv" path="res://scripts/blue_touch.gd" id="5_d5rym"]
+[ext_resource type="Script" uid="uid://bwqhg6j2kl686" path="res://scripts/grey_touch.gd" id="6_2nn5k"]
+
+[node name="Cell" type="Node2D" unique_id=68434498]
+script = ExtResource("1_gwrgs")
+
+[node name="Helpers" type="Node2D" parent="." unique_id=239083194]
+
+[node name="RadialHelp" type="Node2D" parent="Helpers" unique_id=1877854477]
+
+[node name="BigRadius" type="Polygon2D" parent="Helpers/RadialHelp" unique_id=1904870760]
+visible = false
+z_index = 1
+position = Vector2(-1.473, 0)
+color = Color(1, 1, 1, 0.34509805)
+offset = Vector2(195.82304, -43.066887)
+polygon = PackedVector2Array(-212.67845, -108.00997, -179.06734, -107.87199, -161.28009, -77.61917, -125.94872, -77.59968, -108.21218, -46.992577, -72.857635, -46.98989, -56.008133, -18.026642, -73.17155, 12.554283, -55.793976, 43.18918, -73.27196, 73.528564, -55.750336, 104.24519, -72.49553, 133.16595, -108.18657, 133.2539, -125.91574, 163.75676, -161.4064, 163.7251, -179.19914, 194.1846, -212.71204, 194.16266, -230.39653, 163.68909, -266.0259, 163.6891, -283.64233, 133.20639, -319.38968, 133.15866, -336.05005, 103.97225, -318.513, 73.575294, -336.16107, 43.020763, -318.47336, 12.644251, -336.10394, -18.052017, -319.31195, -47.018616, -283.7019, -47.051933, -266.1358, -77.43112, -230.72829, -77.67719)
+uv = PackedVector2Array(-213.55362, -103.73052, -178.12979, -103.76084, -160.39346, -73.0648, -128.52223, -73.011406, -112.314575, -44.91105, -76.88321, -44.936142, -59.132965, -14.229317, -75.622734, 14.389887, -59.148544, 43.101273, -75.31375, 71.26347, -59.110992, 99.37196, -76.835464, 130.06653, -111.46369, 130.00493, -128.52063, 159.53024, -160.59778, 159.55927, -178.13383, 189.83133, -213.55693, 189.82239, -231.09534, 159.53845, -263.11774, 159.5334, -280.2496, 130.06155, -315.01556, 130.06746, -332.76575, 99.38513, -316.4468, 71.23909, -332.6932, 43.06524, -316.16785, 14.438267, -332.70798, -14.243809, -315.0094, -44.9625, -279.26862, -44.99244, -263.1484, -72.982185, -231.34694, -73.11657)
+
+[node name="Line2D" type="Line2D" parent="Helpers/RadialHelp/BigRadius" unique_id=246261387]
+position = Vector2(197.9496, -43.066887)
+points = PackedVector2Array(-212.67845, -108.00997, -179.06734, -107.87199, -161.28009, -77.61917, -125.94872, -77.59968, -108.21218, -46.992577, -72.857635, -46.98989, -56.008133, -18.026642, -73.17155, 12.554283, -55.793976, 43.18918, -73.27196, 73.528564, -55.750336, 104.24519, -72.49553, 133.16595, -108.18657, 133.2539, -125.91574, 163.75676, -161.4064, 163.7251, -179.19914, 194.1846, -212.71204, 194.16266, -230.39653, 163.68909, -266.0259, 163.6891, -283.64233, 133.20639, -319.38968, 133.15866, -336.05005, 103.97225, -318.513, 73.575294, -336.16107, 43.020763, -318.47336, 12.644251, -336.10394, -18.052017, -319.31195, -47.018616, -283.7019, -47.051933, -266.1358, -77.43112, -230.72829, -77.67719)
+closed = true
+width = 5.032
+
+[node name="test" type="Node2D" parent="Helpers/RadialHelp" unique_id=1137096368]
+visible = false
+
+[node name="Hexagon2" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=997737765]
+position = Vector2(0, -57.309586)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon3" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=329138565]
+position = Vector2(49.6, -28.66607)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon4" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=605894114]
+position = Vector2(49.59999, 28.664701)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon5" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1957199084]
+position = Vector2(0, 57.465416)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon6" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=2036035016]
+position = Vector2(-49.6, 28.6647)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon7" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=863373572]
+position = Vector2(-99.24207, 0)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon8" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1679106825]
+position = Vector2(-99.24207, -57.309586)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon9" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=2029268593]
+position = Vector2(-49.6, -85.95944)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon10" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=2127439276]
+position = Vector2(0, -114.60151)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon11" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=845798512]
+position = Vector2(49.6, -85.95944)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon12" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1083845821]
+position = Vector2(99.35149, -57.309586)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon13" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=931413860]
+position = Vector2(99.35149, 0)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon14" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=760700186]
+position = Vector2(99.35148, 57.465416)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon15" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1034742326]
+position = Vector2(49.59999, 85.79489)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon16" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=617558926]
+position = Vector2(0, 114.531845)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon17" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1852641244]
+position = Vector2(-49.6, 85.79488)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon18" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1923677337]
+position = Vector2(-99.24207, 57.465416)
+scale = Vector2(1.110916, 1.110916)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Hexagon" type="Node2D" parent="Helpers/RadialHelp/test" unique_id=1901697275]
+position = Vector2(-49.6, -28.66607)
+scale = Vector2(1.111, 1.111)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 0.0
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="LinearHelp" type="Node2D" parent="Helpers" unique_id=1515212771]
+
+[node name="VertHelper" type="Node2D" parent="Helpers/LinearHelp" unique_id=960741698]
+visible = false
+z_index = 1
+position = Vector2(0, 1040.3081)
+script = ExtResource("3_2yjhv")
+size = Vector2(20, 2024.675)
+corner_radius = 0.0
+outline_width = 0
+fill_color = Color(1, 1, 1, 0.34509805)
+metadata/_custom_type_script = "uid://cqmf7u8b7l1yx"
+
+[node name="LeftHelper" type="Node2D" parent="Helpers/LinearHelp" unique_id=1720584454]
+visible = false
+z_index = 1
+position = Vector2(-898.62726, 518.5183)
+rotation = 1.0471976
+script = ExtResource("3_2yjhv")
+size = Vector2(20, 2010.976)
+corner_radius = 0.0
+outline_width = 0
+fill_color = Color(1, 1, 1, 0.34509805)
+metadata/_custom_type_script = "uid://cqmf7u8b7l1yx"
+
+[node name="RightHelper" type="Node2D" parent="Helpers/LinearHelp" unique_id=1140825539]
+visible = false
+z_index = 1
+position = Vector2(900.8534, 519.7441)
+rotation = -1.0471976
+script = ExtResource("3_2yjhv")
+size = Vector2(20, 2010.976)
+corner_radius = 0.0
+outline_width = 0
+fill_color = Color(1, 1, 1, 0.34509805)
+metadata/_custom_type_script = "uid://cqmf7u8b7l1yx"
+
+[node name="Hexagons" type="Node2D" parent="." unique_id=638380273]
+
+[node name="Hexagon" type="Node2D" parent="Hexagons" unique_id=450676045]
+scale = Vector2(1.054, 1.054)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 4.851
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="InnerHexagon" type="Node2D" parent="Hexagons" unique_id=1399236396]
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 51.827
+polygon_color = Color(0.019607844, 0.6431373, 0.92156863, 1)
+border_size = -1.537
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Labels" type="Node2D" parent="." unique_id=1784883204]
+
+[node name="CenterLabel" type="Label" parent="Labels" unique_id=808120067]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_7c3yk")
+theme_override_font_sizes/font_size = 20
+text = "~3~"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopHint" type="Label" parent="Labels" unique_id=1239232424]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 3.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_7c3yk")
+theme_override_font_sizes/font_size = 20
+text = "~3~"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftHint" type="Label" parent="Labels" unique_id=878926398]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.320629
+offset_top = 17.57987
+offset_right = 30.67937
+offset_bottom = 45.913204
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -1.0471976
+theme_override_fonts/font = ExtResource("4_7c3yk")
+theme_override_font_sizes/font_size = 20
+text = "~3~"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightHint" type="Label" parent="Labels" unique_id=1804988971]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.673965
+offset_top = -16.846884
+offset_right = 29.32603
+offset_bottom = 11.48645
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 1.0471976
+theme_override_fonts/font = ExtResource("4_7c3yk")
+theme_override_font_sizes/font_size = 20
+text = "~3~"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=746529377]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=290939265]
+polygon = PackedVector2Array(-15.534921, -26.862625, -31, 0, -15.518843, 26.890388, 15.560024, 26.855278, 31, 0, 15.4365425, -26.9229)
+
+[node name="TouchControls" type="Node2D" parent="." unique_id=612384257]
+visible = false
+
+[node name="Blue" type="Node2D" parent="TouchControls" unique_id=72157022]
+position = Vector2(-36, -58)
+script = ExtResource("5_d5rym")
+
+[node name="Hexagon" type="Node2D" parent="TouchControls/Blue" unique_id=409759790]
+scale = Vector2(1.054, 1.054)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.078431375, 0.6117647, 0.84705883, 1)
+border_size = 4.851
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="InnerHexagon" type="Node2D" parent="TouchControls/Blue" unique_id=713159942]
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 51.827
+polygon_color = Color(0.019607844, 0.6431373, 0.92156863, 1)
+border_size = -1.537
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="Grey" type="Node2D" parent="TouchControls" unique_id=745499978]
+position = Vector2(36, -58)
+script = ExtResource("6_2nn5k")
+
+[node name="Hexagon" type="Node2D" parent="TouchControls/Grey" unique_id=1107754964]
+scale = Vector2(1.054, 1.054)
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 58.928
+polygon_color = Color(0.17254902, 0.18431373, 0.19215687, 1)
+border_size = 4.851
+border_color = Color(0.964948, 0.9649479, 0.9649479, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[node name="InnerHexagon" type="Node2D" parent="TouchControls/Grey" unique_id=1453797903]
+script = ExtResource("2_2yjhv")
+centered = true
+num_sides = 6
+size = 51.827
+polygon_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
+border_size = -1.537
+border_color = Color(0.24313726, 0.24313726, 0.24313726, 1)
+polygon_rotation = 90.0
+metadata/_custom_type_script = "uid://cc057gin2tqcv"
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]

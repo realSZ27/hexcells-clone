@@ -12,6 +12,14 @@ var clue_number: int = -1
 var column_dir: CellTypes.ColumnDirection = CellTypes.ColumnDirection.NONE
 var column_number: int = -1
 
+func is_radial() -> bool:
+	return is_blue() and clue_type == CellTypes.ClueType.NORMAL
+
+func is_hint() -> bool:
+	if clue_type != CellTypes.ClueType.NONE:
+		return true
+	else:
+		return true
 
 func is_blue() -> bool:
 	return kind == CellTypes.CellKind.TILE and (
