@@ -277,6 +277,10 @@ func _handle_tile_right_click() -> void:
 	if CELL_DATA.is_revealed() and CELL_DATA.is_hint():
 		swap_label_darkened()
 		
+		if $Labels/CenterLabel.get_theme_color("font_color") == Color.WHITE or \
+			!is_a_helper_on():
+			return
+		
 		if CELL_DATA.is_radial() and radial.visible:
 			toggle_radial()
 		elif is_linear_visible:
@@ -308,6 +312,14 @@ func _handle_column_click(e: InputEventMouseButton) -> void:
 # UTILS
 # ========================
 
+func is_a_helper_on() -> bool:
+	var list := $Helpers/LinearHelp.get_children()
+	list.append($Helpers/RadialHelp/BigRadius)
+	for child: Node2D in list:
+		if child.visible:
+			return true
+	return false
+
 func swap_linear_helper() -> void:
 	var helper_map := {
 		CellTypes.ColumnDirection.DIAG_RIGHT: $Helpers/LinearHelp/LeftHelper,
@@ -329,7 +341,7 @@ func swap_label_darkened() -> void:
 	for child: Label in $Labels.get_children():
 		var color := child.get_theme_color("font_color")
 		if color == Color.WHITE:
-			child.add_theme_color_override("font_color", Color(1, 1, 1, .8))
+			child.add_theme_color_override("font_color", Color(1, 1, 1, .5))
 		else:
 			child.remove_theme_color_override("font_color")
 		

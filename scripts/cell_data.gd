@@ -16,10 +16,8 @@ func is_radial() -> bool:
 	return is_blue() and clue_type == CellTypes.ClueType.NORMAL
 
 func is_hint() -> bool:
-	if clue_type != CellTypes.ClueType.NONE:
-		return true
-	else:
-		return true
+	return kind == CellTypes.CellKind.COLUMN_CLUE or \
+		is_radial()
 
 func is_blue() -> bool:
 	return kind == CellTypes.CellKind.TILE and (

@@ -1,5 +1,8 @@
 extends Node2D
 
+# ========================
+# 🖱️ Drag / Touch State
+# ========================
 var dragging: bool = false
 var last_pointer_pos: Vector2 = Vector2.ZERO
 
@@ -14,11 +17,21 @@ var last_pinch_distance: float = 0.0
 var drag_start_pos: Vector2 = Vector2.ZERO
 var is_dragging_real: bool = false
 
+# ========================
+# 🧊 Inertia
+# ========================
+var velocity: Vector2 = Vector2.ZERO
+const INERTIA_DAMP: float = 8.0   # higher = faster slowdown
+
 func _ready() -> void:
 	scale = Vector2.ONE * zoom
 
+
 func _input(event: InputEvent) -> void:
 
+	# ========================
+	# 🖱️ Mouse (UNCHANGED)
+	# ========================
 	if event is InputEventMouseButton:
 		var e := event as InputEventMouseButton
 
@@ -48,6 +61,7 @@ func _input(event: InputEvent) -> void:
 			if is_dragging_real:
 				position += e.relative
 
+
 	# ========================
 	# 📱 Touch Input
 	# ========================
@@ -56,12 +70,14 @@ func _input(event: InputEvent) -> void:
 
 		if e.pressed:
 			touches[e.index] = e.position
+			drag_start_pos = e.position
+			velocity = Vector2.ZERO
 		else:
 			touches.erase(e.index)
 
-		# Reset pinch when fingers change
 		if touches.size() < 2:
 			last_pinch_distance = 0.0
+			is_dragging_real = false
 
 
 	elif event is InputEventScreenDrag:
@@ -69,8 +85,17 @@ func _input(event: InputEvent) -> void:
 		touches[e.index] = e.position
 
 		if touches.size() == 1:
-			# Single finger drag
-			position += e.relative
+			# Single finger drag (scaled properly)
+			if not is_dragging_real:
+				if e.position.distance_to(drag_start_pos) > DRAG_THRESHOLD:
+					is_dragging_real = true
+
+			if is_dragging_real:
+				var delta := e.relative / zoom
+				position += delta
+
+				# velocity in pixels/sec
+				velocity = delta / get_process_delta_time()
 
 		elif touches.size() == 2:
 			handle_pinch_zoom()
@@ -86,7 +111,8 @@ func zoom_at_point(factor: float, screen_point: Vector2) -> void:
 	var actual_factor: float = zoom / old_zoom
 	scale = Vector2.ONE * zoom
 
-	# Adjust position so zoom centers on cursor
+	# keep your original behavior for mouse,
+	# but this now works correctly for touch too
 	position = screen_point + (position - screen_point) * actual_factor
 
 
@@ -102,18 +128,38 @@ func handle_pinch_zoom() -> void:
 		last_pinch_distance = current_distance
 		return
 
-	var factor: float = current_distance / last_pinch_distance
+	var raw_factor: float = current_distance / last_pinch_distance
+
+	# smooth it slightly (prevents jitter)
+	var factor: float = lerp(1.0, raw_factor, 0.2)
 
 	var center: Vector2 = (p1 + p2) * 0.5
 	zoom_at_point(factor, center)
 
 	last_pinch_distance = current_distance
 
+
+# ========================
+# 🧊 Inertia (delta-based)
+# ========================
+func _process(delta: float) -> void:
+	if not dragging and touches.size() == 0:
+		if velocity.length() > 1.0:
+			position += velocity * delta
+			velocity = velocity.lerp(Vector2.ZERO, INERTIA_DAMP * delta)
+		else:
+			velocity = Vector2.ZERO
+
+
+# ========================
+# 🧹 Helpers
+# ========================
 func should_block_click(release_pos: Vector2) -> bool:
 	if not dragging:
 		return false
 	
 	return release_pos.distance_to(drag_start_pos) > DRAG_THRESHOLD
+
 
 func _end_drag() -> void:
 	dragging = false
